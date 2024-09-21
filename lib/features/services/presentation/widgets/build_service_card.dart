@@ -1,3 +1,5 @@
+import 'package:carwashing/core/database/cache/cache_helper.dart';
+import 'package:carwashing/core/services/service_locator.dart';
 import 'package:carwashing/core/widgets/custom_shimmer_category.dart';
 import 'package:carwashing/features/profile/data/models/profile_model.dart';
 import 'package:carwashing/features/services/data/models/services_types.dart';
@@ -45,6 +47,7 @@ class BuildServuceCaed extends StatelessWidget{
         GestureDetector(
              onTap:()async{
                await context.read<ServiceCubit>().addFinalPrices(price:(model.carTypes[0].standard) );
+               await getIt<CacheHelper>().saveData(key: 'totalPrice', value: model.carTypes[0].standard);
                context.read<ServiceCubit>().selectService(context.read<ServiceCubit>().servicesList[0].title );
              },
               child: Card(
@@ -57,7 +60,7 @@ class BuildServuceCaed extends StatelessWidget{
                   child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Icon(Icons.currency_lira, size: 40.w,color:const Color.fromARGB(255, 161, 122, 3),),
+          Icon(Icons.local_car_wash, size: 40.w,color: Colors.teal),
           SizedBox(width: 10.w),
           Expanded(
             child: Column(
@@ -74,7 +77,7 @@ class BuildServuceCaed extends StatelessWidget{
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        Text(model.carTypes[0].standard , style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.bold)),
+                        Text('${model.carTypes[0].standard} \$', style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.bold)),
                         SizedBox(width: 8.w),
                         Radio<String>(
                           value: servicesList[0].title,
@@ -127,6 +130,7 @@ class BuildServuceCaed extends StatelessWidget{
               GestureDetector (
              onTap:() async {
               await context.read<ServiceCubit>().addFinalPrices(price:(model.carTypes[0].deluxe) );
+              await getIt<CacheHelper>().saveData(key: 'totalPrice', value:model.carTypes[0].deluxe );
               context.read<ServiceCubit>().selectService(context.read<ServiceCubit>().servicesList[1].title );
              },
               child: Card(
@@ -140,7 +144,7 @@ class BuildServuceCaed extends StatelessWidget{
                   child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Icon(Icons.currency_lira, size: 40.w,color:const Color.fromARGB(255, 161, 122, 3),),
+          Icon(Icons.card_membership, size: 40.w,color:Colors.red),
           SizedBox(width: 10.w),
           Expanded(
             child: Column(
@@ -157,7 +161,7 @@ class BuildServuceCaed extends StatelessWidget{
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        Text(model.carTypes[0].deluxe , style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.bold)),
+                        Text('${model.carTypes[0].deluxe} \$' , style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.bold)),
                         SizedBox(width: 8.w),
                         Radio<String>(
                           value: servicesList[1].title,
@@ -209,6 +213,7 @@ class BuildServuceCaed extends StatelessWidget{
               GestureDetector(
              onTap:() async {
               await context.read<ServiceCubit>().addFinalPrices(price:(model.carTypes[0].premium) );
+               await getIt<CacheHelper>().saveData(key: 'totalPrice', value:model.carTypes[0].premium );
                context.read<ServiceCubit>().selectService(context.read<ServiceCubit>().servicesList[2].title );
              },
               child: Card(
@@ -221,7 +226,7 @@ class BuildServuceCaed extends StatelessWidget{
                   child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Icon(Icons.currency_lira, size: 40.w,color:const Color.fromARGB(255, 161, 122, 3),),
+          Icon(Icons.fort, size: 40.w,color:Colors.deepOrangeAccent),
           SizedBox(width: 10.w),
           Expanded(
             child: Column(
@@ -238,7 +243,7 @@ class BuildServuceCaed extends StatelessWidget{
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        Text(model.carTypes[0].premium , style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.bold)),
+                        Text('${model.carTypes[0].premium} \$' , style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.bold)),
                         SizedBox(width: 8.w),
                         Radio<String>(
                           value: servicesList[2].title,

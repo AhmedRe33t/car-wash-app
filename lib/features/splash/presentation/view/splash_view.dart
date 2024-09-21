@@ -33,9 +33,9 @@ class _SplashViewState extends State<SplashView> {
                  child: CustomScrollView(
                      slivers: [
                       SliverToBoxAdapter(child: SizedBox(height: 140.h,),),
-                      SliverToBoxAdapter(child: Text('Experience the',style: CustomTextStyle.pacifico600style24,) ,),
-                      SliverToBoxAdapter(child:Text('Ultimate Car',style: CustomTextStyle.pacifico600style24.copyWith(color: AppColors.deepAmperColor),) ,),
-                      SliverToBoxAdapter(child:Text('Wash',style: CustomTextStyle.pacifico600style24.copyWith(color: AppColors.deepAmperColor),) ,),
+                      SliverToBoxAdapter(child: Text(textAlign:TextAlign.center,'Experience the',style: CustomTextStyle.poppins600style24.copyWith(fontSize:30),) ,),
+                      SliverToBoxAdapter(child:Text(textAlign:TextAlign.center,'Ultimate Car',style: CustomTextStyle.poppins600style24.copyWith(color: AppColors.deepAmperColor),) ,),
+                      SliverToBoxAdapter(child:Text(textAlign:TextAlign.center,'Wash',style: CustomTextStyle.poppins600style24.copyWith(color: AppColors.deepAmperColor),) ,),
                       SliverToBoxAdapter(child: SizedBox(height: 50.h,),),
                       const SliverToBoxAdapter(child: CustomSplashImage(),),
                       SliverToBoxAdapter(child: SizedBox(height: 100.h,),),

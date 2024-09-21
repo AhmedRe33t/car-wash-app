@@ -38,8 +38,8 @@ XFile? image; //path
  if (image !=null) {
   images=File(image!.path);
   await fireStorage.ref()
-  .child('images/').child('${FirebaseAuth.instance.currentUser!.uid} .png').putFile( File(image!.path));
-   //emit(PickgallerySuccessState());
+  .child('images/').child('${fristName} .png').putFile( File(image!.path));
+   emit(PickgallerySuccessState());
   
   
  

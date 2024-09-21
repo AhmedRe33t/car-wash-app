@@ -9,6 +9,7 @@ class CustomTextFormField extends StatelessWidget {
     this.onChanged,
     this.onFieldSubmitted,
     this.obscureText, this.suffixIcon, this.prefixIcon,
+  
   });
   final String labelText;
   final Function(String)? onChanged;
@@ -16,6 +17,7 @@ class CustomTextFormField extends StatelessWidget {
   final bool? obscureText;
   final Widget? suffixIcon;
   final Widget? prefixIcon;
+  
   @override
   Widget build(BuildContext context) {
     return Padding(

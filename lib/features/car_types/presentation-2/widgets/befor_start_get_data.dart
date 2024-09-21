@@ -9,8 +9,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class befor_start_get_data extends StatelessWidget {
-  const befor_start_get_data({
+class BeforStartGetData extends StatelessWidget {
+  const BeforStartGetData({
     super.key,
     // required this.carTypes,
     required this.selectedCar,
@@ -42,7 +42,7 @@ class befor_start_get_data extends StatelessWidget {
             itemCount: listCar.length,
             itemBuilder: (context, index) {
               
-              return befor_statrt_item_builder(
+              return BeforStatrtItemBuilder(
                   selectedCar: selectedCar,
                   model: listCar[index],
                   beforestart: beforestart,

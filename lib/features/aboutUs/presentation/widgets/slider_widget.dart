@@ -22,9 +22,9 @@ class _SliderWidgetState extends State<SliderWidget> {
   final CarouselSliderController _textController = CarouselSliderController();
 
   final List<String> _imagePaths = [
-  Assets.imagesPerson,
-  Assets.imagesCoolestCarsFeature,
-  Assets.imagesTruck
+  Assets.imagesSexth,
+  Assets.imagesFrist,
+  Assets.imagesThird
   ];
 
   final List<Widget> widgetsWithtexts = [

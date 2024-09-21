@@ -1,3 +1,4 @@
+import 'package:carwashing/features/aboutUs/presentation/view/aboutus_view.dart';
 import 'package:carwashing/features/auth/auth_cubit/cubit/auth_cubit.dart';
 import 'package:carwashing/features/auth/view/forget_password_view.dart';
 import 'package:carwashing/features/auth/view/sign_in_view.dart';
@@ -13,6 +14,7 @@ import 'package:carwashing/features/standered_wash/presentation/cubit/date_time_
 import 'package:carwashing/features/standered_wash/presentation/view/date_time.dart';
 import 'package:carwashing/features/standered_wash/presentation/view/getLocation.dart';
 import 'package:carwashing/features/standered_wash/presentation/view/over_view.dart';
+import 'package:carwashing/features/your_appointment/presentation/appointment_view.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
@@ -61,6 +63,27 @@ final GoRouter router = GoRouter(routes: [
   GoRoute(
       path: '/homeNavBar',
       builder: (context, state) => const HomeNavBarWidget()),
+
+      GoRoute(
+      path: '/AboutUsView',
+      builder: (context, state) => const AboutUsView()),
+
+       GoRoute(
+      path: '/Oppointment',
+      builder: (context, state) => MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (context) => DateTimeCubit()..getDateAndTime(),
+              ),
+              BlocProvider(
+                create: (context) => ProfileCubit()..getUserDtat(),
+              ),
+               BlocProvider(
+                create: (context) => ServiceCubit()..getFinalPrices(),
+              ),
+            ],
+            child: const Appointment(),
+          )),
   GoRoute(
       path: '/mapsView',
       builder: (context, state) => BlocProvider(

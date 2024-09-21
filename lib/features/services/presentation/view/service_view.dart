@@ -49,10 +49,10 @@ class ServicesView extends StatelessWidget {
                   ),
 
           
-                                              SliverToBoxAdapter(child: SizedBox(height: 5.h,),),
+                 SliverToBoxAdapter(child: SizedBox(height: 5.h,),),
 
            
-                                              SliverToBoxAdapter(child: SizedBox(height: 5.h,),),
+                 SliverToBoxAdapter(child: SizedBox(height: 5.h,),),
 
          
                   SliverToBoxAdapter(
@@ -70,7 +70,7 @@ class ServicesView extends StatelessWidget {
                               : 'select your service',
                           onPressed: () {
                             isServiceSelected
-                                ? customNavigaeReplacement(
+                                ? customNavigate(
                                     context,
                                     path:
                                         '/datetimeview', /*param1: state.selectedService*/

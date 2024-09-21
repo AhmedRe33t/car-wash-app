@@ -7,7 +7,7 @@ class overViewItemBuilder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading:const Icon(Icons.calendar_today) ,
+      leading:const Icon(Icons.calendar_today,color:Color.fromARGB(255, 54, 27, 142)) ,
       title:const Text('Date and Time :'),
       trailing: Text('${model.date} ${model.time}'),
 

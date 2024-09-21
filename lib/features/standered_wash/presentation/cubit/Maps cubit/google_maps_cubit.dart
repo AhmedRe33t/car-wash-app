@@ -1,8 +1,11 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
+import 'package:carwashing/core/database/cache/cache_helper.dart';
+import 'package:carwashing/core/services/service_locator.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:meta/meta.dart';
+import 'package:geocoding/geocoding.dart';
 
 part 'google_maps_state.dart';
 
@@ -69,6 +72,18 @@ class GoogleMapsCubit extends Cubit<GoogleMapsState> {
       infoWindow: InfoWindow(title: 'your location', snippet: '$position'),
       position: location,
     );
+    getIt<CacheHelper>().saveData(key:'locationLa' ,value:'${location.latitude}');
+    getIt<CacheHelper>().saveData(key:'locationLn' ,value:'${location.longitude}');
+
     emit(GoogleMapsSuccess(position!, selectedMarker: selectedMarker));
   }
+
+
+
+final coordinates = new Coordinates(
+          myLocation.latitude, myLocation.longitude);
+      var addresses = await Geocoder.local.findAddressesFromCoordinates(
+          coordinates);
+      var first = addresses.first;
+      print(' ${first.locality}, ${first.adminArea},${first.subLocality}, ${first.subAdminArea},${first.addressLine}, ${first.featureName},${first.thoroughfare}, ${first.subThoroughfare}');
 }

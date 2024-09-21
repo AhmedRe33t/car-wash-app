@@ -219,7 +219,7 @@ class CustomProfileBuilder extends StatelessWidget {
                 onTap: ()async {
                 await  context.read<AuthCubit>().logOut();
                 },
-                icon:const Icon(Icons.logout),
+                icon: Icon(Icons.logout),
                 title: 'Log Out',
                 color: Colors.red);
           },

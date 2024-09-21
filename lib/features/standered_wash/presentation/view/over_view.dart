@@ -1,4 +1,6 @@
+import 'package:carwashing/core/database/cache/cache_helper.dart';
 import 'package:carwashing/core/functions/navigation.dart';
+import 'package:carwashing/core/services/service_locator.dart';
 import 'package:carwashing/core/services/service_payment.dart';
 import 'package:carwashing/core/utils/app_colors.dart';
 import 'package:carwashing/core/utils/app_text_style.dart';
@@ -59,16 +61,27 @@ class OverView extends StatelessWidget {
             const SliverToBoxAdapter(
               child: CustomOverView(),
             ),
-            const SliverToBoxAdapter(
+             SliverToBoxAdapter(
               child: CustomListTitle(
-                icon: Icons.location_city,
-                text: 'Location:',
-                trallingText: ' new_damitta',
+                icon: Icons.location_city,iconColor: Colors.yellow,
+                text: 'Location-latitude:',
+                trallingText:  '  ${getIt<CacheHelper>().getData(key: 'locationLa')}'
+               // (key:'location' ,value:location)
+               // ??' new_damitta',
+              ),
+            ),
+             SliverToBoxAdapter(
+              child: CustomListTitle(
+                icon: Icons.location_city,iconColor: Colors.yellow,
+                text: 'Location-longitude:',
+                trallingText:  '  ${getIt<CacheHelper>().getData(key: 'locationLn')}'
+               // (key:'location' ,value:location)
+               // ??' new_damitta',
               ),
             ),
             const SliverToBoxAdapter(
               child: CustomListTitle(
-                icon: Icons.calendar_view_day,
+                icon: Icons.money,iconColor:Color.fromARGB(255, 11, 178, 53),
                 text: 'payment_method:',
                 trallingText: 'Apple pay',
               ),
@@ -82,7 +95,7 @@ class OverView extends StatelessWidget {
             ),
             SliverToBoxAdapter(
               child: SizedBox(
-                height: 200.h,
+                height: 100.h,
               ),
             ),
             SliverToBoxAdapter(
@@ -159,10 +172,10 @@ class OverView extends StatelessWidget {
                     onPressed: ()async {
       
     try {
-  await PaymentManager.MakePayment(20, 'usd');
+  await PaymentManager.MakePayment(int.parse(getIt<CacheHelper>().getData(key: 'totalPrice')), 'usd');
   customNavigaeReplacement(context, path: '/homeNavBar');
 } catch (e) {
-  print('Payment Error: $e');
+ 
   ScaffoldMessenger.of(context).showSnackBar(
     const SnackBar(content: Text('Payment failed. Please try again.'))
   );

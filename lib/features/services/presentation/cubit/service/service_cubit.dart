@@ -1,7 +1,6 @@
 import 'package:carwashing/features/services/data/models/prices_model.dart';
 import 'package:carwashing/features/services/data/models/services_types.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'service_state.dart';
 
@@ -31,20 +30,6 @@ List<ServicesTypes> servicesList=[];
 }
   }
 
-//    addCarPrices({
-//    required String price
-//    })async{
-//     emit((AddPricrsLoading()));
-//    try {
-//   await FirebaseFirestore.instance.collection('users').doc(FirebaseAuth.instance.currentUser!.uid).collection('prices').add({
-//   'price':price
-
-//   });
-//   emit(AddPricrsSuccess());
-// } on Exception catch (e) {
-//    emit(AddPricrsFaluer( message: e.toString()));
-// }
-//    }
 
  addFinalPrices({
    required String price

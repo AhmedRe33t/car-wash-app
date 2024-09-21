@@ -17,7 +17,7 @@ class CustomForgotPasswrodForm extends StatelessWidget {
       listener: (context, state) {
         if (state is ResetPasswordSuccessState) {
           showToast("Check Your Email To Reset Your Password");
-          customNavigaeReplacement(context, path:"/signIn");
+          customNavigaeReplacement(context, path:"/signInView");
         } else if (state is ResetPasswordFailureState) {
           showToast(state.errMessage);
         }

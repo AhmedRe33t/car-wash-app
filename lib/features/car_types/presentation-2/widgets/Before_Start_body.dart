@@ -1,4 +1,3 @@
-// before_start_body.dart
 
 import 'package:carwashing/core/database/cache/cache_helper.dart';
 import 'package:carwashing/core/functions/navigation.dart';
@@ -6,7 +5,6 @@ import 'package:carwashing/core/services/service_locator.dart';
 import 'package:carwashing/features/car_types/cubit/cubit/before_start_page_cubit.dart';
 import 'package:carwashing/features/car_types/cubit/cubit/before_start_page_state.dart';
 import 'package:carwashing/features/car_types/presentation-2/widgets/befor_start_get_data.dart';
-import 'package:carwashing/features/services/presentation/cubit/service/service_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -44,7 +42,7 @@ class BeforeStartBody extends StatelessWidget {
         
             // Car types list
         
-            befor_start_get_data(
+            BeforStartGetData(
               selectedCar: selectedCar,
               beforestart: beforestart,
               listCar: context.read<CarTypesCubit>().carTypes,

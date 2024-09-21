@@ -2,15 +2,13 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carwashing/core/utils/app_colors.dart';
 import 'package:carwashing/features/car_types/cubit/cubit/before_start_page_cubit.dart';
 import 'package:carwashing/features/car_types/data/carType_model.dart';
-import 'package:carwashing/features/services/data/models/prices_model.dart';
-import 'package:carwashing/features/services/presentation/cubit/service/service_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shimmer/shimmer.dart';
 
-class befor_statrt_item_builder extends StatelessWidget {
-  const befor_statrt_item_builder({
+class BeforStatrtItemBuilder extends StatelessWidget {
+  const BeforStatrtItemBuilder({
     super.key,
     required this.selectedCar,
     required this.model,

@@ -2,7 +2,6 @@
 
 
 import 'package:carwashing/features/car_types/data/carType_model.dart';
-import 'package:carwashing/features/services/data/models/prices_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -20,7 +19,8 @@ class CarTypesCubit extends Cubit<CarTypesState> {
 
  List<CartypeModel>carTypes=[];
   
-   addCarTypes({required String carType,required String carImage,
+   addCarTypes({
+    required String carType,required String carImage,
    required String standard,required String deluxe,required String premium,
    })async{
     emit(AddCarTypesLoading());
@@ -29,7 +29,7 @@ class CarTypesCubit extends Cubit<CarTypesState> {
    'name':carType,
    'image':carImage,
    'standard':standard,
-   'deluxe':deluxe,
+   'deluxe':deluxe,  
    'Premium':premium,
    
 
