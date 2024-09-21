@@ -64,7 +64,7 @@ class OverView extends StatelessWidget {
              SliverToBoxAdapter(
               child: CustomListTitle(
                 icon: Icons.location_city,iconColor: Colors.yellow,
-                text: 'Location-latitude:',
+                text: 'Location-city:',
                 trallingText:  '  ${getIt<CacheHelper>().getData(key: 'locationLa')}'
                // (key:'location' ,value:location)
                // ??' new_damitta',
@@ -73,7 +73,7 @@ class OverView extends StatelessWidget {
              SliverToBoxAdapter(
               child: CustomListTitle(
                 icon: Icons.location_city,iconColor: Colors.yellow,
-                text: 'Location-longitude:',
+                text: 'Location-street:',
                 trallingText:  '  ${getIt<CacheHelper>().getData(key: 'locationLn')}'
                // (key:'location' ,value:location)
                // ??' new_damitta',
