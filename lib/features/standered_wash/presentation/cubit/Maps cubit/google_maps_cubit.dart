@@ -11,9 +11,11 @@ part 'google_maps_state.dart';
 
 class GoogleMapsCubit extends Cubit<GoogleMapsState> {
   Position? position;
+   
   late final Completer<GoogleMapController> mapController;
   LatLng? selectedLocation;
   Marker? selectedMarker;
+  
   GoogleMapsCubit() : super(GoogleMapsInitial()) {
     mapController = Completer();
     _initializePosition();
@@ -65,25 +67,23 @@ class GoogleMapsCubit extends Cubit<GoogleMapsState> {
   }
 
   // Handle map tap and add marker
-  void updateSelectedLocation(LatLng location) {
+  void updateSelectedLocation(LatLng location) async{
     selectedLocation = location;
     selectedMarker = Marker(
       markerId: const MarkerId('selected_location'),
       infoWindow: InfoWindow(title: 'your location', snippet: '$position'),
       position: location,
     );
-    getIt<CacheHelper>().saveData(key:'locationLa' ,value:'${location.latitude}');
-    getIt<CacheHelper>().saveData(key:'locationLn' ,value:'${location.longitude}');
+   
+
+   List<Placemark>? placemarks= await placemarkFromCoordinates(location.latitude, location.longitude);
+    getIt<CacheHelper>().saveData(key:'locationLa' ,value:'${placemarks[0].country}-${placemarks[0].locality}');
+    getIt<CacheHelper>().saveData(key:'locationLn' ,value:'${placemarks[0].name}');
 
     emit(GoogleMapsSuccess(position!, selectedMarker: selectedMarker));
   }
 
 
 
-final coordinates = new Coordinates(
-          myLocation.latitude, myLocation.longitude);
-      var addresses = await Geocoder.local.findAddressesFromCoordinates(
-          coordinates);
-      var first = addresses.first;
-      print(' ${first.locality}, ${first.adminArea},${first.subLocality}, ${first.subAdminArea},${first.addressLine}, ${first.featureName},${first.thoroughfare}, ${first.subThoroughfare}');
+
 }
