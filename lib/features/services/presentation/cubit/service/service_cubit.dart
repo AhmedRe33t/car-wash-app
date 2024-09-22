@@ -1,6 +1,7 @@
 import 'package:carwashing/features/services/data/models/prices_model.dart';
 import 'package:carwashing/features/services/data/models/services_types.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'service_state.dart';
 
@@ -36,7 +37,7 @@ List<ServicesTypes> servicesList=[];
    })async{
     emit((AddPricrsLoading()));
    try {
-  await FirebaseFirestore.instance.collection('finalPrice').doc('pLjH87mQIWV9kEPAryqA').set({
+  await FirebaseFirestore.instance.collection('users').doc(FirebaseAuth.instance.currentUser!.uid).collection('finalPrice').doc('pLjH87mQIWV9kEPAryqA').set({
   'price':price
 
   });
@@ -45,14 +46,14 @@ List<ServicesTypes> servicesList=[];
    emit(AddPricrsFaluer( message: e.toString()));
 }
    }
- List<CarPrices>FinalListPrices=[];
+ List<CarPrices>finalListPrices=[];
   getFinalPrices()async{
     emit(GetPricrsLoading());
    try {
-   
-  await FirebaseFirestore.instance.collection('finalPrice').get().then((value){
+   finalListPrices=[];
+  await FirebaseFirestore.instance.collection('users').doc(FirebaseAuth.instance.currentUser!.uid).collection('finalPrice').get().then((value){
        value.docs.forEach((element){
-           FinalListPrices.add(CarPrices.fromJson(element.data()));
+           finalListPrices.add(CarPrices.fromJson(element.data()));
        });
        emit(GetPricrsSuccess());
   });

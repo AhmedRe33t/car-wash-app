@@ -14,7 +14,7 @@ import 'package:carwashing/features/standered_wash/presentation/cubit/date_time_
 import 'package:carwashing/features/standered_wash/presentation/view/date_time.dart';
 import 'package:carwashing/features/standered_wash/presentation/view/getLocation.dart';
 import 'package:carwashing/features/standered_wash/presentation/view/over_view.dart';
-import 'package:carwashing/features/your_appointment/presentation/appointment_view.dart';
+import 'package:carwashing/features/your_appointment/presentation/view/appointment_view.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
@@ -82,7 +82,7 @@ final GoRouter router = GoRouter(routes: [
                 create: (context) => ServiceCubit()..getFinalPrices(),
               ),
             ],
-            child: const Appointment(),
+            child:  Appointment(),
           )),
   GoRoute(
       path: '/mapsView',

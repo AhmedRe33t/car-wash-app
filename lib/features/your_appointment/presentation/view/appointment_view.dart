@@ -1,8 +1,8 @@
-import 'package:carwashing/core/functions/navigation.dart';
-import 'package:carwashing/core/services/service_payment.dart';
+import 'package:carwashing/core/database/cache/cache_helper.dart';
+import 'package:carwashing/core/services/service_locator.dart';
+import 'package:carwashing/core/utils/app_assets.dart';
 import 'package:carwashing/core/utils/app_colors.dart';
 import 'package:carwashing/core/utils/app_text_style.dart';
-import 'package:carwashing/core/widgets/custom_btn.dart';
 import 'package:carwashing/features/services/presentation/cubit/service/service_cubit.dart';
 import 'package:carwashing/features/standered_wash/presentation/widgets/custom_appbar_standard.dart';
 import 'package:carwashing/features/standered_wash/presentation/widgets/custom_final_price.dart';
@@ -14,11 +14,25 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 class Appointment extends StatelessWidget {
-  const Appointment({super.key});
+   Appointment({super.key});
   final int index = 0;
+  bool isFinished=getIt<CacheHelper>().getData(key: 'orderFinished')??true;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return  isFinished?
+     Padding(
+       padding:const  EdgeInsets.symmetric(horizontal:16),
+       child: Center(
+         child: Container(
+          height:400.h,
+          
+           decoration:const BoxDecoration(
+            image:DecorationImage(image: AssetImage(Assets.imagesNoOrderHeartbreak,),fit:BoxFit.fill )
+             )),
+       ),
+     ):
+    
+     Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false,
           toolbarHeight: 140.h,
@@ -42,16 +56,27 @@ class Appointment extends StatelessWidget {
             const SliverToBoxAdapter(
               child: CustomOverView(),
             ),
-            const SliverToBoxAdapter(
+            SliverToBoxAdapter(
               child: CustomListTitle(
-                icon: Icons.location_city,
-                text: 'Location:',
-                trallingText: ' new_damitta',
+                icon: Icons.location_city,iconColor: Colors.yellow,
+                text: 'Location-city:',
+                trallingText:  '  ${getIt<CacheHelper>().getData(key: 'locationLa')}'
+               // (key:'location' ,value:location)
+               // ??' new_damitta',
+              ),
+            ),
+             SliverToBoxAdapter(
+              child: CustomListTitle(
+                icon: Icons.location_city,iconColor: Colors.yellow,
+                text: 'Location-street:',
+                trallingText:  '  ${getIt<CacheHelper>().getData(key: 'locationLn')}'
+               // (key:'location' ,value:location)
+               // ??' new_damitta',
               ),
             ),
             const SliverToBoxAdapter(
               child: CustomListTitle(
-                icon: Icons.calendar_view_day,
+                icon: Icons.money,iconColor:Color.fromARGB(255, 11, 178, 53),
                 text: 'payment_method:',
                 trallingText: 'Apple pay',
               ),
@@ -76,7 +101,7 @@ class Appointment extends StatelessWidget {
                         style: CustomTextStyle.pacifico600style24
                             .copyWith(color: AppColors.primaryColor),
                       ),
-                      customPrice(model: context.read<ServiceCubit>().FinalListPrices, style: CustomTextStyle.pacifico600style24.copyWith(color:AppColors.deepAmperColor),)
+                      CustomPrice(model: context.read<ServiceCubit>().finalListPrices, style: CustomTextStyle.pacifico600style24.copyWith(color:AppColors.deepAmperColor),)
                      
                     ]),
               ),

@@ -110,7 +110,7 @@ class OverView extends StatelessWidget {
                             .copyWith(color: AppColors.primaryColor),
                       ),
                      // CustomOverView(),
-                    customPrice(model: context.read<ServiceCubit>().FinalListPrices, style: CustomTextStyle.poppins500style18.copyWith(color:AppColors.primaryColor),),
+                    CustomPrice(model: context.read<ServiceCubit>().finalListPrices, style: CustomTextStyle.poppins500style18.copyWith(color:AppColors.primaryColor),),
 
                       
                     ]),
@@ -153,7 +153,7 @@ class OverView extends StatelessWidget {
                         style: CustomTextStyle.pacifico600style24
                             .copyWith(color: AppColors.primaryColor),
                       ),
-                      customPrice(model: context.read<ServiceCubit>().FinalListPrices, style: CustomTextStyle.pacifico600style24.copyWith(color:AppColors.deepAmperColor),)
+                      CustomPrice(model: context.read<ServiceCubit>().finalListPrices, style: CustomTextStyle.pacifico600style24.copyWith(color:AppColors.deepAmperColor),)
                       // Text(
                       //   '15\$',
                       //   style: CustomTextStyle.pacifico600style24
@@ -173,6 +173,7 @@ class OverView extends StatelessWidget {
       
     try {
   await PaymentManager.MakePayment(int.parse(getIt<CacheHelper>().getData(key: 'totalPrice')), 'usd');
+  await getIt<CacheHelper>().saveData(key: 'orderFinished',value:false);
   customNavigaeReplacement(context, path: '/homeNavBar');
 } catch (e) {
  

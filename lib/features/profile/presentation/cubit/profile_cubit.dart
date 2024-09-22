@@ -17,20 +17,22 @@ class ProfileCubit extends Cubit<ProfileState> {
  try {
   emit(GetProfileDataLoading());
       listProfileData=[];
-  await FirebaseFirestore.instance.collection('users').get().then((value){
-   value.docs.forEach((element)async {
-    await getCarTypeList(element);
-     listProfileData.add(ProfileDataMode.fromJson(element.data(), listCarTypes));
+      await getCarTypeList();
+  await FirebaseFirestore.instance.collection('users').doc(FirebaseAuth.instance.currentUser!.uid).get().then((value){
+   value.data();
+   
+    
+     listProfileData.add(ProfileDataMode.fromJson(value.data(), listCarTypes));
      emit(GetProfileDataSuccess());
    },
    
-   );});
+   );
 } on Exception catch (e) {
   emit(GetProfileDataFaluire(errorMassge: e.toString()));
 }
   }
- Future<void> getCarTypeList(QueryDocumentSnapshot<Map<String, dynamic>> element)async{
-   await FirebaseFirestore.instance.collection('users').doc(element.id).collection('carTypes').get().then((value)=>
+ Future<void> getCarTypeList()async{
+   await FirebaseFirestore.instance.collection('users').doc(FirebaseAuth.instance.currentUser!.uid).collection('carTypes').get().then((value)=>
     value.docs.forEach((element){
       listCarTypes.add(CartypeModel.fromJson(element.data()));
     })

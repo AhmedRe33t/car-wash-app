@@ -196,10 +196,7 @@ class CustomProfileBuilder extends StatelessWidget {
             icon:const Icon(Icons.edit),
             title: 'Edit Profile',
             color: AppColors.blueColor),
-        Setting_item_listtile(
-            icon:const Icon(Icons.payment),
-            title: 'Edit Profile',
-            color: AppColors.blueColor),
+       
         Setting_item_listtile(
             icon: const Icon(Icons.workspace_premium),
             title: 'Loyality Club',
@@ -211,6 +208,7 @@ class CustomProfileBuilder extends StatelessWidget {
             }
             if(state is SignOutSuccessState){
                   getIt<CacheHelper>().removeData(key: 'logSuccess');
+                  
                   customNavigaeReplacement(context,path:'/signInView' );
             }
           },
@@ -219,7 +217,7 @@ class CustomProfileBuilder extends StatelessWidget {
                 onTap: ()async {
                 await  context.read<AuthCubit>().logOut();
                 },
-                icon: Icon(Icons.logout),
+                icon:const Icon(Icons.logout),
                 title: 'Log Out',
                 color: Colors.red);
           },

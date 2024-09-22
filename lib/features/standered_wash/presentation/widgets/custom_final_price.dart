@@ -8,8 +8,8 @@ import 'package:carwashing/features/services/presentation/cubit/service/service_
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class customPrice extends StatelessWidget {
-  const customPrice({super.key, required this.model, required this.style});
+class CustomPrice extends StatelessWidget {
+  const CustomPrice({super.key, required this.model, required this.style});
   final List<CarPrices> model;
   final TextStyle style;
   @override
