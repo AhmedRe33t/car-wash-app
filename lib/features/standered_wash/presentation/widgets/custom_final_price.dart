@@ -1,6 +1,4 @@
 import 'package:carwashing/core/functions/custom_toast.dart';
-import 'package:carwashing/core/utils/app_colors.dart';
-import 'package:carwashing/core/utils/app_text_style.dart';
 import 'package:carwashing/core/widgets/custom_shimmer_category.dart';
 import 'package:carwashing/features/services/data/models/prices_model.dart';
 import 'package:carwashing/features/services/presentation/cubit/service/service_cubit.dart';

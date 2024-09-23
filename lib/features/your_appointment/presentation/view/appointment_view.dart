@@ -19,7 +19,9 @@ class Appointment extends StatelessWidget {
   bool isFinished=getIt<CacheHelper>().getData(key: 'orderFinished')??true;
   @override
   Widget build(BuildContext context) {
-    return  isFinished?
+    return 
+      isFinished ?
+  // context.read<ServiceCubit>().finalListPrices== null?
      Padding(
        padding:const  EdgeInsets.symmetric(horizontal:16),
        child: Center(

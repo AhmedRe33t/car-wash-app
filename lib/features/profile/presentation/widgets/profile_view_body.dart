@@ -208,6 +208,7 @@ class CustomProfileBuilder extends StatelessWidget {
             }
             if(state is SignOutSuccessState){
                   getIt<CacheHelper>().removeData(key: 'logSuccess');
+                  getIt<CacheHelper>().removeData(key: 'orderFinished');
                   
                   customNavigaeReplacement(context,path:'/signInView' );
             }
