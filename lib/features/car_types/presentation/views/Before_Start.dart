@@ -1,9 +1,9 @@
-import 'package:carwashing/features/car_types/presentation-2/widgets/Before_Start_body.dart';
+import 'package:carwashing/features/car_types/presentation/widgets/Before_Start_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class Before_Start extends StatelessWidget {
-  const Before_Start({super.key});
+class BeforeStart extends StatelessWidget {
+  const BeforeStart({super.key});
 
   @override
   Widget build(BuildContext context) {

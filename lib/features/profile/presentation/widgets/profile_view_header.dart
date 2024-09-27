@@ -3,8 +3,8 @@ import 'package:carwashing/core/utils/app_text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class profile_view_header extends StatelessWidget {
-  const profile_view_header({super.key});
+class ProfileViewHeader extends StatelessWidget {
+  const ProfileViewHeader({super.key});
 
   @override
   Widget build(BuildContext context) {

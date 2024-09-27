@@ -27,8 +27,8 @@ class AuthCubit extends Cubit<AuthState> {
 
 
 
-XFile? image; //path
-  File? images; 
+  XFile? image; //path
+  
   
  uploadImage()async{
   final ImagePicker picker = ImagePicker();
@@ -36,14 +36,13 @@ XFile? image; //path
  image = await (picker.pickImage(source: ImageSource.gallery));
   
  if (image !=null) {
-  images=File(image!.path);
+ 
   await fireStorage.ref()
   .child('images/').child('${fristName} .png').putFile( File(image!.path));
    emit(PickgallerySuccessState());
   
   
  
-  return images!.readAsBytes();
 }
 
 else{
@@ -68,7 +67,7 @@ else{
       await fireStorage
       .ref()
       .child("images/")
-      .child("${FirebaseAuth.instance.currentUser!.uid}.png}")
+      .child("${fristName}.png}")
       .putFile(File(image!.path));
      await addProfileData(user.user!.uid);
       
@@ -80,6 +79,7 @@ else{
       emit(SignupFailureState(errMessage: e.toString()));
     }
   }
+  
   addProfileData(String id )async{
       CollectionReference profileData= FirebaseFirestore.instance.collection('users');
          profileData.doc(id).set({
@@ -89,7 +89,7 @@ else{
           'image':await fireStorage
       .ref()
       .child("images/")
-      .child("${FirebaseAuth.instance.currentUser!.uid}.png}")
+      .child("${fristName}.png}")
       .getDownloadURL()
          });
          

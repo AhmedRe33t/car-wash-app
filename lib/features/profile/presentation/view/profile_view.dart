@@ -13,9 +13,9 @@ class ProfileView extends StatelessWidget {
         child: Scaffold(
             body: CustomScrollView(
               slivers: [
-   const   SliverToBoxAdapter(child: profile_view_header()),
+   const   SliverToBoxAdapter(child: ProfileViewHeader()),
       SliverToBoxAdapter(child: SizedBox(height: 32.h,)),
-     const SliverToBoxAdapter(child: profile_view_body( ),),
+     const SliverToBoxAdapter(child: ProfileViewBody( ),),
       SliverToBoxAdapter(child: SizedBox(height: 32.h,)),
       //SliverToBoxAdapter(child:),
 

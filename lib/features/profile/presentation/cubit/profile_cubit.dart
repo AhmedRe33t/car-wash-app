@@ -2,7 +2,6 @@
 import 'package:carwashing/features/car_types/data/carType_model.dart';
 import 'package:carwashing/features/profile/data/models/profile_model.dart';
 import 'package:carwashing/features/profile/presentation/cubit/profile_state.dart';
-import 'package:carwashing/features/services/data/models/prices_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -12,7 +11,6 @@ class ProfileCubit extends Cubit<ProfileState> {
 
   List<ProfileDataMode> listProfileData=[];
   List<CartypeModel> listCarTypes=[];
-  // List<CarPrices> listPrices=[];
   getUserDtat()async{
  try {
   emit(GetProfileDataLoading());
@@ -20,8 +18,6 @@ class ProfileCubit extends Cubit<ProfileState> {
       await getCarTypeList();
   await FirebaseFirestore.instance.collection('users').doc(FirebaseAuth.instance.currentUser!.uid).get().then((value){
    value.data();
-   
-    
      listProfileData.add(ProfileDataMode.fromJson(value.data(), listCarTypes));
      emit(GetProfileDataSuccess());
    },

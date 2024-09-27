@@ -3,8 +3,8 @@ import 'package:carwashing/core/utils/app_text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class Setting_item_listtile extends StatelessWidget {
-   Setting_item_listtile({super.key, required this.icon, required this.title, required this.color,this.onTap});
+class SettingItemListtile extends StatelessWidget {
+   SettingItemListtile({super.key, required this.icon, required this.title, required this.color,this.onTap});
  final Icon icon;
  final String title;
  final Color color;

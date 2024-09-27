@@ -1,5 +1,4 @@
 
-import 'package:carwashing/features/services/data/models/prices_model.dart';
 
 class CartypeModel{
   final String name;

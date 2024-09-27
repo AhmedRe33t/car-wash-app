@@ -20,8 +20,11 @@ class CarTypesCubit extends Cubit<CarTypesState> {
  List<CartypeModel>carTypes=[];
   
    addCarTypes({
-    required String carType,required String carImage,
-   required String standard,required String deluxe,required String premium,
+    required String carType,
+    required String carImage,
+   required String standard,
+   required String deluxe,
+   required String premium,
    })async{
     emit(AddCarTypesLoading());
    try {

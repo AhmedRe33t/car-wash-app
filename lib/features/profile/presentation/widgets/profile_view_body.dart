@@ -17,8 +17,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shimmer/shimmer.dart';
 
-class profile_view_body extends StatelessWidget {
-  const profile_view_body({
+class ProfileViewBody extends StatelessWidget {
+  const ProfileViewBody({
     super.key,
   });
 
@@ -192,12 +192,12 @@ class CustomProfileBuilder extends StatelessWidget {
             ),
           ],
         ),
-        Setting_item_listtile(
+        SettingItemListtile(
             icon:const Icon(Icons.edit),
             title: 'Edit Profile',
             color: AppColors.blueColor),
        
-        Setting_item_listtile(
+        SettingItemListtile(
             icon: const Icon(Icons.workspace_premium),
             title: 'Loyality Club',
             color: AppColors.amperColor),
@@ -214,7 +214,7 @@ class CustomProfileBuilder extends StatelessWidget {
             }
           },
           builder: (context, state) {
-            return Setting_item_listtile(
+            return SettingItemListtile(
                 onTap: ()async {
                 await  context.read<AuthCubit>().logOut();
                 },

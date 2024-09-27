@@ -4,7 +4,7 @@ import 'package:carwashing/features/auth/view/forget_password_view.dart';
 import 'package:carwashing/features/auth/view/sign_in_view.dart';
 import 'package:carwashing/features/auth/view/sign_up_view.dart';
 import 'package:carwashing/features/car_types/cubit/cubit/before_start_page_cubit.dart';
-import 'package:carwashing/features/car_types/presentation-2/views/Before_Start.dart';
+import 'package:carwashing/features/car_types/presentation/views/Before_Start.dart';
 import 'package:carwashing/features/home/presentation/widgets/home_nav_bar.dart';
 import 'package:carwashing/features/profile/presentation/cubit/profile_cubit.dart';
 import 'package:carwashing/features/services/presentation/cubit/service/service_cubit.dart';
@@ -100,6 +100,6 @@ final GoRouter router = GoRouter(routes: [
                 create: (context) => ServiceCubit(),
               ),
             ],
-            child: const Before_Start(),
+            child: const BeforeStart(),
           )),
 ]);
