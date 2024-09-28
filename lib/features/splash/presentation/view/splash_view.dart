@@ -4,7 +4,9 @@ import 'package:carwashing/core/services/service_locator.dart';
 import 'package:carwashing/core/utils/app_colors.dart';
 import 'package:carwashing/core/utils/app_text_style.dart';
 import 'package:carwashing/core/widgets/custom_btn.dart';
+import 'package:carwashing/features/splash/presentation/widgets/custom_button_splash.dart';
 import 'package:carwashing/features/splash/presentation/widgets/custom_splash_image.dart';
+import 'package:carwashing/features/splash/presentation/widgets/custom_title.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -33,16 +35,13 @@ class _SplashViewState extends State<SplashView> {
                  child: CustomScrollView(
                      slivers: [
                       SliverToBoxAdapter(child: SizedBox(height: 140.h,),),
-                      SliverToBoxAdapter(child: Text(textAlign:TextAlign.center,'Experience the',style: CustomTextStyle.poppins600style24.copyWith(fontSize:30),) ,),
-                      SliverToBoxAdapter(child:Text(textAlign:TextAlign.center,'Ultimate Car',style: CustomTextStyle.poppins600style24.copyWith(color: AppColors.deepAmperColor),) ,),
-                      SliverToBoxAdapter(child:Text(textAlign:TextAlign.center,'Wash',style: CustomTextStyle.poppins600style24.copyWith(color: AppColors.deepAmperColor),) ,),
+                      
+                     const SliverToBoxAdapter(child:CustomTitle() ,),
                       SliverToBoxAdapter(child: SizedBox(height: 50.h,),),
                       const SliverToBoxAdapter(child: CustomSplashImage(),),
                       SliverToBoxAdapter(child: SizedBox(height: 100.h,),),
-                       SliverToBoxAdapter(child: CustomBtn(text: 'Get Started ',color: AppColors.amperColor,onPressed: () {
-                        
-                        customNavigaeReplacement(context, path: path);
-                      },),),
+                       SliverToBoxAdapter(child:CustomSplashButton(path: path,)
+                      ,),
                       
 
                       
